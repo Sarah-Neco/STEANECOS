@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101923">
+  <title>Steam — Redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#" data-page="home">
+      <span class="brand-symbol">S</span><span>STEAM</span>
+    </a>
+    <div class="sidebar-label">NAVEGAÇÃO</div>
+    <nav class="side-nav">
+      <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span>Início</button>
+      <button class="nav-item" data-page="explore"><span class="nav-icon">⌕</span>Explorar jogos</button>
+      <button class="nav-item" data-page="library"><span class="nav-icon">▤</span>Biblioteca</button>
+      <button class="nav-item" data-page="wishlist"><span class="nav-icon">♡</span>Lista de desejos</button>
+    </nav>
+    <div class="sidebar-label secondary-label">SUA CONTA</div>
+    <nav class="side-nav">
+      <button class="nav-item" data-page="settings"><span class="nav-icon">⚙</span>Preferências</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="mini-profile">
+        <span class="avatar">G</span>
+        <span><b>Conta de demonstração</b><small>Perfil de jogador</small></span>
+      </div>
+      <p>Protótipo acadêmico<br>Redesign de interface • Fase 5</p>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <header class="topbar">
+      <div class="topbar-links">
+        <button data-page="home" class="top-link active">LOJA</button>
+        <button data-page="library" class="top-link">BIBLIOTECA</button>
+        <button data-page="explore" class="top-link">COMUNIDADE</button>
+      </div>
+      <div class="topbar-actions">
+        <label class="top-search">
+          <span>⌕</span>
+          <input id="globalSearch" type="search" placeholder="Buscar jogos...">
+        </label>
+        <button class="icon-button" data-page="wishlist">♡</button>
+        <div class="top-user"><span class="avatar">G</span><span>Jogador</span></div>
+      </div>
+    </header>
+
+    <div class="content-wrap">
+      <section class="page active" id="home">
+        <div class="welcome-row">
+          <div>
+            <div class="eyebrow">SUA CENTRAL DE JOGOS</div>
+            <h1>Descubra algo novo.</h1>
+            <p class="muted">Uma loja mais organizada para encontrar, comparar e acessar seus jogos favoritos.</p>
+          </div>
+          <div class="welcome-note"><span class="online-dot"></span> Experiência de demonstração</div>
+        </div>
+
+        <div class="featured-layout">
+          <article class="hero-feature" id="heroFeature">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <span class="feature-kicker">DESTAQUE DA SEMANA</span>
+              <h2>Horizonte<br>sem limites.</h2>
+              <p>Explore paisagens extraordinárias e descubra uma nova aventura.</p>
+              <div class="hero-meta"><span class="rating">★ Muito positiva</span><span>•</span><span>Aventura</span></div>
+              <button class="primary-button" data-open-game="1">Conhecer jogo <span>↗</span></button>
+            </div>
+            <div class="hero-pagination"><span class="current"></span><span></span><span></span></div>
+          </article>
+          <aside class="featured-side">
+            <div class="side-feature-heading"><span>RECOMENDADOS</span><button data-page="explore">Ver todos ↗</button></div>
+            <div id="recommendedList" class="recommended-list"></div>
+          </aside>
+        </div>
+
+        <section class="content-section">
+          <div class="section-title-row">
+            <div><span class="eyebrow">ESCOLHAS PARA VOCÊ</span><h2>Em destaque</h2></div>
+            <button class="text-link" data-page="explore">Explorar catálogo →</button>
+          </div>
+          <div class="game-grid" id="featuredGrid"></div>
+        </section>
+
+        <section class="promo-strip">
+          <div>
+            <span class="eyebrow">DESCUBRA POR CATEGORIA</span>
+            <h2>Encontre seu próximo universo.</h2>
+            <p>Explore os jogos por estilo e encontre experiências que combinam com você.</p>
+          </div>
+          <div class="category-chips">
+            <button data-category="Aventura">✦ Aventura</button>
+            <button data-category="Ação">⚡ Ação</button>
+            <button data-category="Estratégia">♟ Estratégia</button>
+            <button data-category="Simulação">⌂ Simulação</button>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-title-row">
+            <div><span class="eyebrow">OPORTUNIDADES</span><h2>Ofertas em destaque</h2></div>
+            <button class="text-link" data-page="explore">Ver catálogo →</button>
+          </div>
+          <div class="game-grid" id="offersGrid"></div>
+        </section>
+        <footer>Protótipo acadêmico. Não representa uma versão oficial da Steam. Jogos, avaliações e preços são fictícios.</footer>
+      </section>
+
+      <section class="page" id="explore">
+        <div class="page-heading">
+          <div><div class="eyebrow">LOJA</div><h1>Explorar jogos</h1><p class="muted">Use a busca e os filtros para encontrar o que procura.</p></div>
+          <span class="result-count" id="resultCount"></span>
+        </div>
+        <div class="filter-bar">
+          <label class="search-field"><span>⌕</span><input id="searchInput" type="search" placeholder="Nome do jogo ou palavra-chave..."></label>
+          <select id="genreFilter">
+            <option value="">Todos os gêneros</option>
+            <option>Aventura</option><option>Ação</option><option>Estratégia</option><option>Simulação</option>
+          </select>
+          <select id="sortFilter">
+            <option value="featured">Ordenar: recomendados</option>
+            <option value="name">Nome: A–Z</option>
+            <option value="price-low">Menor preço</option>
+            <option value="price-high">Maior preço</option>
+          </select>
+        </div>
+        <div class="active-filters" id="activeFilters"></div>
+        <div class="game-grid explore-grid" id="exploreGrid"></div>
+        <footer>Dados ilustrativos criados para testar a navegação do protótipo.</footer>
+      </section>
+
+      <section class="page" id="library">
+        <div class="page-heading">
+          <div><div class="eyebrow">SUA COLEÇÃO</div><h1>Biblioteca</h1><p class="muted">Seus jogos organizados em um só lugar.</p></div>
+          <span class="library-count" id="libraryCount">0 jogos</span>
+        </div>
+        <div class="library-toolbar">
+          <div class="library-tabs">
+            <button class="active" data-library-filter="all">Todos</button>
+            <button data-library-filter="recent">Adicionados recentemente</button>
+            <button data-library-filter="favorites">Favoritos</button>
+          </div>
+          <label class="search-field compact-search"><span>⌕</span><input id="librarySearch" type="search" placeholder="Buscar na biblioteca..."></label>
+        </div>
+        <div class="library-content" id="libraryContent"></div>
+        <footer>A biblioteca é simulada e não está conectada a uma conta real.</footer>
+      </section>
+
+      <section class="page" id="wishlist">
+        <div class="page-heading">
+          <div><div class="eyebrow">SEUS INTERESSES</div><h1>Lista de desejos</h1><p class="muted">Guarde os jogos que deseja conhecer depois.</p></div>
+        </div>
+        <div class="game-grid" id="wishlistGrid"></div>
+        <div class="empty-state hidden" id="wishlistEmpty">
+          <span>♡</span><h3>Sua lista está esperando por você</h3>
+          <p>Adicione jogos aos favoritos para encontrá-los rapidamente aqui.</p>
+          <button class="primary-button" data-page="explore">Explorar jogos</button>
+        </div>
+      </section>
+
+      <section class="page" id="details">
+        <div class="breadcrumbs">
+          <button data-page="home">Início</button><span>/</span>
+          <button data-page="explore">Loja</button><span>/</span>
+          <b id="breadcrumbTitle">Detalhes</b>
+        </div>
+        <div class="detail-header">
+          <div><div class="eyebrow">DETALHES DO JOGO</div><h1 id="detailTitle">Nome do jogo</h1><div class="detail-tags" id="detailTags"></div></div>
+          <button class="back-button" data-page="explore">← Voltar ao catálogo</button>
+        </div>
+        <div class="detail-layout">
+          <div class="detail-main">
+            <div class="detail-cover" id="detailCover"><div class="detail-cover-shade"></div><span id="detailCoverTitle"></span></div>
+            <div class="detail-description"><h3>Sobre este jogo</h3><p id="detailDescription"></p></div>
+            <div class="screenshots-row" id="screenshotsRow"></div>
+          </div>
+          <aside class="purchase-panel">
+            <div class="purchase-art" id="purchaseArt"></div>
+            <p class="muted" id="detailShort"></p>
+            <div class="review-line"><span>AVALIAÇÕES DOS JOGADORES</span><b>★ Muito positiva</b></div>
+            <div class="price-row"><span>Preço demonstrativo</span><strong id="detailPrice"></strong></div>
+            <button class="primary-button full-button" id="addLibraryButton">Adicionar à biblioteca</button>
+            <button class="secondary-button full-button" id="favoriteButton">♡ Adicionar à lista de desejos</button>
+            <div class="info-list">
+              <div><span>Gênero</span><b id="detailGenre"></b></div>
+              <div><span>Plataforma</span><b>Windows</b></div>
+              <div><span>Modo</span><b>Um jogador</b></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="settings">
+        <div class="eyebrow">PERSONALIZAÇÃO</div><h1>Preferências</h1>
+        <p class="muted page-intro">Organize a experiência de navegação de acordo com suas preferências.</p>
+        <div class="settings-card">
+          <div class="settings-heading"><span class="settings-icon">▦</span><div><h3>Exibição da loja</h3><p>Controle quais informações aparecem durante a navegação.</p></div></div>
+          <div class="setting-row"><div><b>Mostrar recomendações</b><p>Exibir sugestões de jogos na página inicial.</p></div><input type="checkbox" class="toggle" checked data-setting="recommendations"></div>
+          <div class="setting-row"><div><b>Exibir avaliações</b><p>Mostrar a avaliação da comunidade nos cards de jogos.</p></div><input type="checkbox" class="toggle" checked data-setting="ratings"></div>
+          <div class="setting-row"><div><b>Visualização compacta</b><p>Reduzir o espaçamento entre os elementos da loja.</p></div><input type="checkbox" class="toggle" data-setting="compact"></div>
+          <div class="setting-row"><div><b>Reduzir animações</b><p>Diminuir os efeitos de movimento da interface.</p></div><input type="checkbox" class="toggle" data-setting="motion"></div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-heading"><span class="settings-icon">⌕</span><div><h3>Busca e organização</h3><p>Defina como os resultados devem ser apresentados.</p></div></div>
+          <div class="setting-row"><div><b>Manter filtros ao voltar</b><p>Preservar os filtros selecionados durante a navegação.</p></div><input type="checkbox" class="toggle" checked data-setting="filters"></div>
+        </div>
+        <footer>As preferências são demonstrativas e não alteram uma conta real.</footer>
+      </section>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
